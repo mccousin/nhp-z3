@@ -1,0 +1,112 @@
+{namespace dnp=Dnp\Website\ViewHelpers}
+
+<dnp:json as="images" splitchar="||">
+    <f:for each="{data.image}" as="file">
+        "<f:uri.image image="{file}" width="1134" height="756c" />"||
+    </f:for>
+</dnp:json>
+
+</div> <!-- Close .container -->
+<div class="container-fluid {dnp:spaceCss()}">
+    <f:if condition="{data.tx_mask_youtubevideolink}">
+        <f:then>
+            <fancy-teaser
+                    :images="{images}"
+                    headline="{data.header -> f:format.raw() -> f:format.stripTags()}"
+                    class="video {f:if(condition: '{data.layout} == 2', then: 'image-right')}" v-cloak
+                    {f:if(condition: '{data.tx_mask_options} == 1', then: 'disable-pagination')}
+            >
+                    <div slot="content">
+                        <div class="row">
+                            <div class="image">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="{data.tx_mask_youtubevideolink}?mute={data.tx_mask_muted}&autoplay={data.tx_mask_autoplay}&rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="contentvideo">
+                                <h2>
+                                    <dnp:headline layout="{data.layout}">{data.header}</dnp:headline>
+                                </h2>
+
+                                <div class="body">
+                                    <f:if condition="{data.bodytext}">
+                                        <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+                                    </f:if>
+
+                                    <div class="buttons">
+                                        <f:if condition="{data.tx_mask_button_link}">
+                                            <f:link.typolink parameter="{data.tx_mask_button_link}" class="btn btn-default">
+                                                <f:if condition="{data.tx_mask_button_label}">
+                                                    <f:then>
+                                                        {data.tx_mask_button_label}
+                                                    </f:then>
+                                                    <f:else>
+                                                        Mehr erfahren
+                                                    </f:else>
+                                                </f:if>
+                                            </f:link.typolink>
+                                        </f:if>
+
+                                        <f:for each="{data.tx_mask_additional_buttons}" as="button">
+                                            <f:link.typolink parameter="{button.tx_mask_button_link}" class="btn btn-default">
+                                                {button.tx_mask_label}
+                                            </f:link.typolink>
+                                        </f:for>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </fancy-teaser>
+        </f:then>
+        <f:else>
+            <fancy-teaser
+                    :images="{images}"
+                    headline="{data.header -> f:format.raw() -> f:format.stripTags()}"
+                    class="{f:if(condition: '{data.layout} == 2', then: 'image-right')}" v-cloak
+                    {f:if(condition: '{data.tx_mask_options} == 1', then: 'disable-pagination')}
+            >
+            <div class="image">
+                <f:image image="{data.image.0}" width="1134" height="756c" />
+            </div>
+            <div slot="content">
+                <h2>
+                    <dnp:headline layout="{data.layout}">{data.header}</dnp:headline>
+                </h2>
+
+                <div class="body">
+                    <f:if condition="{data.bodytext}">
+                        <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+                    </f:if>
+
+                    <div class="buttons">
+                        <f:if condition="{data.tx_mask_button_link}">
+                            <f:link.typolink parameter="{data.tx_mask_button_link}" class="btn btn-default">
+                                <f:if condition="{data.tx_mask_button_label}">
+                                    <f:then>
+                                        {data.tx_mask_button_label}
+                                    </f:then>
+                                    <f:else>
+                                        Mehr erfahren
+                                    </f:else>
+                                </f:if>
+                            </f:link.typolink>
+                        </f:if>
+
+                        <f:for each="{data.tx_mask_additional_buttons}" as="button">
+                            <f:link.typolink parameter="{button.tx_mask_button_link}" class="btn btn-default">
+                                {button.tx_mask_label}
+                            </f:link.typolink>
+                        </f:for>
+                    </div>
+                </div>
+
+            </div>
+            </fancy-teaser>
+        </f:else>
+    </f:if>
+
+</div>
+
+<div class="container"> <!-- Reopen .container -->

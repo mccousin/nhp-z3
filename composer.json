@@ -1,0 +1,47 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.typo3.org/"
+    }
+  ],
+  "name": "typo3/cms-base-distribution",
+  "description": "TYPO3 CMS Base Distribution",
+  "license": "GPL-2.0+",
+  "require": {
+    "typo3/cms": "^8.7",
+    "helhum/typo3-console": "^4.4",
+    "typo3-ter/mask": "^3.0",
+    "typo3-ter/mask-export": "^0.9.1",
+    "gridelementsteam/gridelements": "^8.2",
+    "andersundsehr/aus-driver-amazon-s3": "^1.5",
+    "friendsoftypo3/extension-builder": "^8.7",
+    "georgringer/news": "^6.0",
+    "dmitryd/typo3-realurl": "^2.2",
+    "kraken-io/kraken-php": "^1.6",
+    "minifranske/lazy-load-placeholder": "dev-master",
+    "svewap/cleverreach": "^0.1.2",
+    "embed/embed": "^3.3",
+    "teaminmedias-pluswerk/ke_search": "^2.8"
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "web"
+    },
+    "helhum/typo3-console": {
+      "install-extension-dummy": "0"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Dnp\\Website\\": "web/typo3conf/ext/dnp_website/Classes",
+      "Dnp\\DnpPlugins\\": "web/typo3conf/ext/dnp_plugins/Classes"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "7.2.4"
+    }
+  }
+}

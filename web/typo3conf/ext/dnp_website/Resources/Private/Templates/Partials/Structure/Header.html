@@ -1,0 +1,23 @@
+<nav id="mainNavigation" ref="navigation" class="navbar navbar-expand-xl {f:if(condition: '{data.layout} == 1', then: 'dark')}" v-bind:class="{active: isFixed || open, fixed: isFixed}">
+    <div class="flag">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <f:link.page pageUid="1" class="navbar-brand">
+        <f:format.raw>{logo}</f:format.raw>
+    </f:link.page>
+
+    <button class="navbar-toggler collapsed " @click="open = !open" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navigation ausklappen">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <f:cObject typoscriptObjectPath="lib.navigation.main"/>
+        </ul>
+        <span class="hidden-xs hidden-sm search"><f:cObject typoscriptObjectPath="lib.search" /></span>
+    </div>
+</nav>

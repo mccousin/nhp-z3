@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:dnp="http://typo3.org/ns/Dnp/Website/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:spaceless>
+<f:render partial="Structure/Header" arguments="{_all}"/>
+<div id="app">
+    <f:if condition="{data.tx_mask_header_height} !== 'disable'">
+        <div id="intro" class="headerslider">
+            <div class="headercontainer">
+                <f:cObject typoscriptObjectPath="lib.headercontainer" />
+            </div>
+
+            <fixed-menu class="left">
+                <template slot-scope="props">
+                    <a href="https://www.facebook.com/nachhaltigkeitspreis" target="_blank" class="icon-facebook"></a>
+                    <a href="https://twitter.com/_DNP_" target="_blank" class="icon-twitter"></a>
+                    <a href="https://www.instagram.com/nachhaltigkeitspreis/" target="_blank" class="icon-instagram"></a>
+                    <a href="/meta-navigation/zum-newsletter-anmelden/" target="_blank" class="icon-newsletter"></a>
+                </template>
+            </fixed-menu>
+
+            <fixed-menu class="right">
+                <template slot-scope="props">
+                    <f:cObject typoscriptObjectPath="lib.navigation.lang" />
+                </template>
+            </fixed-menu>
+            <scroll-arrow></scroll-arrow>
+        </div>
+    </f:if>
+
+    <div id="pageWrap">
+        <f:render section="Main"/>
+        <f:render partial="Structure/Footer" arguments="{_all}"/>
+    </div>
+
+    <cookie-law theme="dnp" button-class="btn btn-primary" button-text="Zustimmen">
+        <div slot="message">
+            Um unsere Webseite für Sie fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Mehr dazu in unserer
+            <f:link.page pageUid="14">Datenschutzerklärung</f:link.page>.
+        </div>
+    </cookie-law>
+</div>
+</f:spaceless>
+</html>
+
+

@@ -1,0 +1,16 @@
+<f:layout name="HomeWithHeader"/>
+
+<f:section name="Main">
+    <div id="contentWrap">
+        <div class="container">
+            <f:cObject typoscriptObjectPath="lib.navigation.breadcrumb"/>
+
+            <!--TYPO3SEARCH_begin-->
+                <f:cObject typoscriptObjectPath="lib.content0" />
+            <!--TYPO3SEARCH_end-->
+        </div>
+    </div>
+    <div id="footerContentWrap" class="container">
+        <f:cObject typoscriptObjectPath="lib.content.footer" />
+    </div>
+</f:section>

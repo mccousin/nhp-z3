@@ -1,0 +1,38 @@
+<div class="z3-slick-slider">
+
+  <f:if condition="{data.tx_mask_slide}">
+      <f:for each="{data.tx_mask_slide}" as="data_item">
+
+        <div class="color-{data_item.tx_mask_textcolor} textpos-{data_item.tx_mask_position}">
+
+
+          <f:if condition="{data_item.tx_mask_img}">
+          <f:for each="{data_item.tx_mask_img}" as="file">
+            <f:image image="{file}" alt="{file.alternative}" title="{file.title}"  />
+          </f:for>
+        </f:if>
+        <div class="textblock">
+          <f:if condition="{data_item.tx_mask_title}">
+            <h1>{data_item.tx_mask_title}</h1>
+          </f:if>
+
+          <f:if condition="{data_item.tx_mask_text}">
+            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data_item.tx_mask_text}</f:format.html>
+          </f:if>
+
+          <f:if condition="{data_item.tx_mask_link}">
+            <div class="buttons">
+              <f:link.typolink parameter="{data_item.tx_mask_link}"class="btn btn-default">
+                <f:if condition="{data_item.tx_mask_linktext}">
+                  {data_item.tx_mask_linktext}
+                </f:if>
+              </f:link.typolink>
+            </div>
+          </f:if>
+        </div>
+
+        </div>
+      </f:for>
+  </f:if>
+
+</div>

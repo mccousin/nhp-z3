@@ -1,0 +1,303 @@
+
+// kleinere Anpassungen von Abständen etc.
+#contentWrap {
+  .slick-next, .slick-prev {
+    top: initial;
+    bottom: 0;
+  }
+  .button-line.center {
+    justify-content: left;
+  }
+  .fancy-teaser .content h2 {
+    font-size: 2.5vmax;
+  }
+  @media screen and (min-width: 768px) {
+    .fancy-teaser {
+      .row {
+        justify-content: center;
+      }
+
+      &.image-right {
+        .content {
+          margin-left: initial;
+        }
+      }
+      .image {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 26px;
+      line-height: 35px;
+    }
+    .two-gridelements .item {
+        margin-bottom: 0;
+    }
+    .fancy-teaser {
+      .image {
+        flex:0 0 100%;
+        max-width:100%
+      }
+      .content, .contentvideo {
+        flex:0 0 100%;
+        max-width:100%;
+        padding-top: 1rem;
+        h2 {
+          margin-left: 0;
+        }
+      }
+      &.image-right .content,
+      &.image-right .contentvideo {
+        order: initial;
+        z-index: 20;
+      }
+      &.image-right .image {
+        order: initial;
+        z-index: 10;
+      }
+    }
+  }
+}
+
+// Anpassungen Hauptmenü
+nav#mainNavigation {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  ul.navbar-nav {
+    padding-right: 30px;
+  }
+  a.nav-link {
+    color: black;
+  }
+  .navbar-brand svg path {
+    fill: black;
+  }
+  .dropdown-menu {
+    background: white;
+  }
+  @media screen and (max-width: 1199px) {
+    .navbar-toggler span {
+      background-color: black;
+    }
+    .navbar-nav {
+      margin-bottom: 10px;
+    }
+    #navbarSupportedContent .search {
+      .round {
+        justify-content: flex-start;
+      }
+      position: relative;
+      right: initial;
+      left: 0
+    }
+  }
+}
+
+// txtimgslider.html / Maskelement
+.z3-slick-slider {
+  a.btn {
+    border: none;
+  }
+  .color-1 {
+    color: white;
+    a {
+      color: white;
+    }
+    a.btn {
+      background-color: white;
+      color: black;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .color-2 {
+    color: black;
+    a {
+      color: black;
+    }
+    a.btn {
+      background-color: black;
+      color: white;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  .slick-slide {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    .textblock {
+      position: absolute;
+      width: 60%;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10%;
+      h1 {
+        font-size: 2.5vmax;
+        line-height: 3.5vmax;
+      }
+    }
+  }
+  .textpos-2 {
+    .textblock {
+      left: 15%;
+      right: initial;
+    }
+  }
+}
+
+// Anpassungen Slider Startseite / HomeWithHeader.html
+#intro.headerslider {
+  display: block;
+  padding: 0;
+  height: auto;
+  &:after {
+    display: none;
+  }
+  .slick-next {
+    right: 3%;
+  }
+  .slick-prev {
+    left: 3%;
+  }
+  .down {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+#app {
+  #intro {
+    #logo-row {
+      display: flex;
+      position: relative;
+      width: auto;
+      right: 0;
+    }
+    .text {
+      padding: 0 65px;
+    }
+    @media screen and (max-width: 768px) {
+      .text {
+        padding: 0;
+      }
+    }
+  }
+}
+
+// ke_search Styles
+#navbarSupportedContent {
+  position: relative;
+  .search {
+    //display: none;
+    position: absolute;
+    right: -30px;
+    width: 52px;
+    .searchbutton {
+      border: none;
+      background-color: transparent;
+    }
+    img {
+      padding: 2px;
+      width: 35px;
+    }
+    .white {
+      z-index: 1000;
+      display: none;
+      width: 1px;
+      border: 1px solid white;
+      background-color: white;
+      text-align: right;
+    }
+    #ke_search_searchfield_sword {
+      font-size: 1rem;
+      padding-left: 5px;
+      margin-right: 10px;
+      border: none;
+      height: 33px;
+    }
+    .round {
+      display: flex;
+      align-content: center;
+      justify-content: flex-end;
+    }
+    &.do-submit {
+      .white {
+        border: 1px solid white;
+      }
+    }
+  }
+}
+#contentWrap .tx-kesearch-pi1 {
+  font-family: Gotham SSm A,Gotham SSm B,sans-serif;
+
+  #kesearch_results .result-list-item .hit {
+    color: black;
+  }
+}
+
+// Anpassungen Video im Fancy Teaser
+.fancy-teaser.video {
+  &>.row>.image {
+    display: none;
+  }
+  .content {
+    display: initial;
+    flex: initial;
+    max-width: initial;
+    z-index: initial;
+    order: initial;
+    .image {
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
+    }
+    .contentvideo {
+      padding: 2rem;
+      position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
+    }
+  }
+  &.image-right {
+    .contentvideo {
+      order: -1;
+      z-index: 20;
+    }
+  }
+}
+
+// Änderungen für mobile Ansicht
+@media screen and (max-width: 768px) {
+  .gallery.mobile {
+      display: none;
+    }
+  .dnp-element.frame-space-before-medium {
+    margin-top: 0;
+  }
+  .timetable-plugin {
+    .button-line .btn {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+// Hyphens für News-Überschriften
+.news {
+  h1, h2, h3, h4 {
+    hyphens: auto;
+  }
+}
