@@ -1,0 +1,111 @@
+mod.web_layout.BackendLayouts {
+    default {
+        title = Einspalting (Standard)
+        icon = EXT:dnp_website/Resources/Public/Previews/backend-1col.png
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 2
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Inhalt
+                                colPos = 0
+                            }
+                        }
+                    }
+                    2 {
+                        columns {
+                            1 {
+                                name = Teaserzeile unterhalb
+                                colPos = 5
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    marginal {
+        title = Zweispaltig mit Marginalspalte rechts
+        icon = EXT:dnp_website/Resources/Public/Previews/backend-2cols.png
+
+        config {
+            backend_layout {
+                colCount = 2
+                rowCount = 3
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Inhalt überhalb
+                                colPos = 2
+                                colspan = 2
+                            }
+                        }
+                    }
+                    2 {
+                        columns {
+                            1 {
+                                name = Inhalt
+                                colPos = 0
+                            }
+                            2 {
+                                name = Marginal (rechts)
+                                colPos = 1
+                            }
+                        }
+                    }
+                    3 {
+                        columns {
+                            1 {
+                                name = Teaserzeile unterhalb
+                                colPos = 5
+                                colspan = 2
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    startseite {
+        title = Einspalting (Slider im Kopf)
+        icon = EXT:dnp_website/Resources/Public/Previews/backend-1col.png
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 3
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Header
+                                colPos = 10
+                            }
+                        }
+                    }
+                    2 {
+                        columns {
+                            1 {
+                                name = Inhalt
+                                colPos = 0
+                            }
+                        }
+                    }
+                    3 {
+                        columns {
+                            1 {
+                                name = Teaserzeile unterhalb
+                                colPos = 5
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

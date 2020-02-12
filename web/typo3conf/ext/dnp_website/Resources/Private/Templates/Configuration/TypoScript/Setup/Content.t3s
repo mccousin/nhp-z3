@@ -1,0 +1,164 @@
+lib.content0 < styles.content.get
+lib.content0.select.where = colPos=0
+
+lib.content.footer < styles.content.get
+lib.content.footer.select {
+    where = colPos=5 AND (tx_dnpwebsite_no_inherit = 0 OR pid = {page:uid} )
+    where.stdWrap.insertData = 1
+}
+lib.content.footer.slide = -1
+
+lib.content.marginal < styles.content.get
+lib.content.marginal.select.where = colPos=1
+lib.content.marginal.slide = -1
+
+lib.content.top < styles.content.get
+lib.content.top.select.where = colPos=2
+lib.content.top.slide = -1
+
+lib.headercontainer < styles.content.get
+lib.headercontainer.select.where = colPos=10
+
+### Intro Headline
+lib.header.headline = TEXT
+lib.header.headline.data = levelfield: -1, subtitle, slide
+
+### Intro Image
+lib.header.image._url = IMG_RESOURCE
+lib.header.image._url {
+    file {
+        import.data = levelmedia:-1,slide
+        treatIdAsReference = 1
+        import.listNum = 0
+        width = 1920
+    }
+}
+lib.header.image.big = TEXT
+lib.header.image.big {
+    typolink {
+        returnLast = url
+        parameter.cObject < lib.header.image._url
+    }
+}
+
+
+### Intro Image Facebool
+lib.facebook.image._url = IMG_RESOURCE
+lib.facebook.image._url {
+    /*
+    file = GIFBUILDER
+    file {
+        XY = [10.w],630
+        width = 1200
+        height = 630
+
+        10 = IMAGE
+        10.file {
+            import.data = levelmedia:-1,slide
+            treatIdAsReference = 1
+            import.listNum = 0
+            width = 1200
+            //height = 630c
+        }
+
+        20 = TEXT
+        20 {
+            text < lib.header.headline
+            offset = [10.w/2],10
+            fontColor = white
+        }
+    }
+    */
+    file {
+        import.data = levelmedia:-1,slide
+        treatIdAsReference = 1
+        import.listNum = 0
+        width = 1200c
+        height = 630c
+    }
+}
+lib.facebook.image.big = TEXT
+lib.facebook.image.big {
+    dataWrap = {getIndpEnv:TYPO3_REQUEST_HOST}|
+    typolink {
+        returnLast = url
+        parameter.cObject < lib.facebook.image._url
+    }
+}
+
+#lib.header.test = FLUIDTEMPLATE
+#lib.header.test {
+
+#    file = EXT:dnp_website/Resources/Private/Templates/Partials/Structure/HeaderImage.html
+    #stdWrap.wrap = <style type="text/css">|</style>
+
+#    dataProcessing.10 = Dnp\DnpPlugins\Frontend\DataProcessor\FilesReferenceProcessor
+#    dataProcessing.10 {
+#        uids = TEXT
+#        uids.data = levelmedia:-1, slide
+
+
+        #as = files
+#    }
+#}
+
+
+#page.headerData.22 = < lib.header.test
+#page.headerData.22 = TEXT
+#page.headerData.22.data = levelmedia:-1, slide
+
+#lib.header.image.small < lib.header.image.big
+#lib.header.image.small.typolink.parameter.cObject.file.width = 800
+#
+###CSS im Header laden mit Mediaqueries
+page.cssInline {
+#    10 < lib.header.image.small
+#    10.wrap (
+#        @media (max-width: 768px) {
+#            #intro:after { background-image: url(|); }
+#        }
+#    )
+#
+    20 < lib.header.image.big
+    20.wrap (
+        #intro:after { background-image: url(|); }
+    )
+}
+
+lib.plugin.shortnews.image = FILES
+lib.plugin.shortnews.image {
+    files.current = 1
+
+    maxItems = 1
+
+    renderObj = IMG_RESOURCE
+    renderObj {
+        file.import.dataWrap = {file:current:storage}:{file:current:identifier}
+        file.maxW = 200
+        #altText.data = file:current:title
+        stdWrap.wrap = <div class="image" style="background-image: url(|)"></div>
+    }
+}
+
+
+### Fluid Styled Content überschreiben
+lib.contentElement.layoutRootPaths.10 = EXT:dnp_website/Resources/Private/Templates/Layout
+lib.contentElement.partialRootPaths.10 = EXT:dnp_website/Resources/Private/Templates/Partials
+lib.contentElement.templateRootPaths.10 = EXT:dnp_website/Resources/Private/Templates/Content
+
+
+lib.search = TEXT
+lib.search.typolink.parameter = 963
+lib.search.typolink.returnLast = url
+lib.search.wrap (
+<form action="|" method="get" name="form_kesearch_searchfield" id="form_kesearch_searchfield">
+     <div class="round">
+            <div class="white">
+                <input type="text" id="ke_search_searchfield_sword" name="tx_kesearch_pi1[sword]" placeholder="Suchbegriff" />
+            </div>
+            <img src="/typo3conf/ext/dnp_website/Resources/Public/Icons/suchicon.svg" class="lens"/>
+            <button type="submit" class="searchbutton" id="ke_search_searchfield_submit"></button>
+    </div>
+</form>
+)
+lib.search.wrap.insertData = 1

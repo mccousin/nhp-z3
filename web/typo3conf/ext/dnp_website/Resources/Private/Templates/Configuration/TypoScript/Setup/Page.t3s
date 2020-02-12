@@ -1,0 +1,121 @@
+##############
+#### PAGE ####
+##############
+
+page = PAGE
+
+#config.noPageTitle = 2
+
+config.headerComment = Engineered by https://feinbier.io
+
+#source optimization
+#config.sourceopt.enabled = 1
+#config.sourceopt.formatHtml = 4
+#config.sourceopt.removeGenerator = 1
+
+###Jetzt bauen wir unseren eigenen Title mittels headerData###
+#page.headerData.5 = TEXT
+#page.headerData.5.field = subtitle // title
+#page.headerData.5.noTrimWrap = |<title>Deutscher Nachhaltigkeitspreis - |</title>|
+
+## Google Analytics
+page.headerData.2 = TEXT
+page.headerData.2.value (
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49116736-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-49116736-1', { 'anonymize_ip': true });
+</script>
+)
+
+page {
+    typeNum = 0
+
+    #cssInline {
+    #    10 = FILE
+    #    10.file = fileadmin/templates/_generated/important.css
+    #}
+
+    includeCSS {
+        dnp2017 = fileadmin/templates/_generated-3/dnp.css
+
+        font = https://cloud.typography.com/6840176/6226372/css/fonts.css
+        font.external = 1
+    }
+
+    headerData.5 = TEXT
+    headerData.5.value = <link rel="shortcut icon" href="/fileadmin/templates/images/favicon.ico" />
+
+    includeJSFooter {
+        jquery = https://code.jquery.com/jquery-2.2.4.min.js
+        jquery.external = 1
+        jquery.integrity = sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=
+
+        tether = https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js
+        tether.external = 1
+        tether.integrity = sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb
+
+        dnp2017 = fileadmin/templates/_generated-3/dnp.umd.min.js
+        add-2019 = fileadmin/templates/_generated-3/add-2019.js
+    }
+
+    meta {
+        viewport = width=device-width, initial-scale=1, shrink-to-fit=no
+        og:site_name = Deutscher Nachhaltigkeitspreis
+        og:locale = de_DE
+        og:image < lib.facebook.image.big
+        og:type = website
+    }
+
+    10 = FLUIDTEMPLATE
+    10 {
+        file.stdWrap.cObject = CASE
+        file.stdWrap.cObject {
+            key.data = levelfield:-1, backend_layout_next_level, slide
+            key.override.field = backend_layout
+
+            default = TEXT
+            default.value = {$plugin.tx_dnplayout.view.templateRootPath}/Page/Home.html
+
+            pagets__marginal = TEXT
+            pagets__marginal.value = {$plugin.tx_dnplayout.view.templateRootPath}/Page/2Cols.html
+
+            pagets__startseite = TEXT
+            pagets__startseite.value = {$plugin.tx_dnplayout.view.templateRootPath}/Page/HomeWithHeader.html
+        }
+
+        partialRootPath     = {$plugin.tx_dnplayout.view.partialRootPath}
+        layoutRootPath      = {$plugin.tx_dnplayout.view.layoutRootPath}
+
+        variables {
+            logo = FILE
+            logo.file = fileadmin/templates/images/logo.svg
+        }
+
+        dataProcessing {
+            10 = Dnp\DnpPlugins\Frontend\DataProcessor\FilesReferenceProcessor
+            10 {
+                uids = TEXT
+                uids.data = levelmedia:-1, slide
+            }
+
+            20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            20 {
+                references.fieldName = tx_mask_video
+                as = video
+            }
+        }
+    }
+
+    #20 = TEXT
+    #20.value = <link rel="stylesheet" type="text/css" href="fileadmin/templates/_generated/dnp2017.css" media="all">
+
+}
+
+// z3 additions
+page.includeCSS.1z3 = /fileadmin/templates/_generated-3/add-2019.css
+[globalVar = GP:c = 1]
+page.includeCSS.2z3 = /fileadmin/templates/_generated-3/temp.css
+[gloabl]

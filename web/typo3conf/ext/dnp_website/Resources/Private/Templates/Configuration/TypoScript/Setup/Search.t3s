@@ -1,0 +1,29 @@
+plugin.tx_kesearch_pi1 {
+    templateRootPaths {
+        5 = EXT:ke_search/Resources/Private/Templates/
+        10 = EXT:dnp_website/Resources/Private/Templates/Search/Templates/
+    }
+    partialRootPaths {
+        5 = EXT:ke_search/Resources/Private/Partials/
+        10 = EXT:dnp_website/Resources/Private/Templates/Search/Partials/
+    }
+    layoutRootPaths {
+        5 = EXT:ke_search/Resources/Private/Layouts/
+        10 = EXT:dnp_website/Resources/Private/Templates/Search/Layouts/
+    }
+}
+
+plugin.tx_kesearch_pi2 {
+    templateRootPaths {
+        5 = EXT:ke_search/Resources/Private/Templates/
+        10 = EXT:dnp_website/Resources/Private/Templates/Search/Templates/
+    }
+    partialRootPaths{
+        5 = EXT:ke_search/Resources/Private/Partials/
+        10 = EXT:dnp_website/Resources/Private/Templates/Search/Partials/
+    }
+    layoutRootPaths {
+        5 = EXT:ke_search/Resources/Private/Layouts/
+        10 = EXT:dnp_website/Resources/Private/Templates/Search/Layouts/
+    }
+}
