@@ -118,4 +118,4 @@ page {
 page.includeCSS.1z3 = /fileadmin/templates/_generated-3/add-2019.css
 [globalVar = GP:c = 1]
 page.includeCSS.2z3 = /fileadmin/templates/_generated-3/temp.css
-[gloabl]
+[global]
